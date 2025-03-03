@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaPedidos.BLL\SistemaPedidos.BLL.csproj" />
+    <ProjectReference Include="..\SistemaPedidos.DAL\SistemaPedidos.DAL.csproj" />
+    <ProjectReference Include="..\SistemaPedidos.Helpers\SistemaPedidos.Helpers.csproj" />
+  </ItemGroup>
+
 </Project>

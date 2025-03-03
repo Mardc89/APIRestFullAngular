@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaPedidos.BLL\SistemaPedidos.BLL.csproj" />
+    <ProjectReference Include="..\SistemaPedidos.DTO\SistemaPedidos.DTO.csproj" />
+    <ProjectReference Include="..\SistemaPedidos.IOC\SistemaPedidos.IOC.csproj" />
+  </ItemGroup>
+
 </Project>
