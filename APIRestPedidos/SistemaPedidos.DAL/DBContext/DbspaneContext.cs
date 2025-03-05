@@ -45,7 +45,7 @@ public partial class DbspaneContext : DbContext
 
     public virtual DbSet<Producto> Productos { get; set; }
 
-    public virtual DbSet<Role> Roles { get; set; }
+    public virtual DbSet<Rol> Roles { get; set; }
 
     public virtual DbSet<Token> Tokens { get; set; }
 
@@ -323,7 +323,7 @@ public partial class DbspaneContext : DbContext
                 .HasConstraintName("FK_Productos_Categorias");
         });
 
-        modelBuilder.Entity<Role>(entity =>
+        modelBuilder.Entity<Rol>(entity =>
         {
             entity.HasKey(e => e.IdRol);
 

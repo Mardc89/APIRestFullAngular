@@ -29,5 +29,5 @@ public partial class Usuario
 
     public string? NombreFoto { get; set; }
 
-    public virtual Role IdRolNavigation { get; set; } = null!;
+    public virtual Rol IdRolNavigation { get; set; } = null!;
 }
