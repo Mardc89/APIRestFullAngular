@@ -11,7 +11,7 @@ public partial class Producto
 
     public int IdCategoria { get; set; }
 
-    public decimal Precio { get; set; }
+    public decimal? Precio { get; set; }
 
     public string? UrlImagen { get; set; }
 
