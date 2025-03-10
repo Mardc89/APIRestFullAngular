@@ -17,7 +17,7 @@ namespace SistemaPedidos.DTO
 
         public string? Precio { get; set; }
 
-        public bool Estado { get; set; }
+        public int? Estado { get; set; }
 
         public int Stock { get; set; }
     }

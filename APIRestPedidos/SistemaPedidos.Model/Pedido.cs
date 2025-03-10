@@ -11,11 +11,11 @@ public partial class Pedido
 
     public string Codigo { get; set; } = null!;
 
-    public decimal MontoTotal { get; set; }
+    public decimal? MontoTotal { get; set; }
 
     public string Estado { get; set; } = null!;
 
-    public DateTime FechaPedido { get; set; }
+    public DateTime? FechaPedido { get; set; }
 
     public virtual ICollection<DetallePedido> DetallePedidos { get; } = new List<DetallePedido>();
 

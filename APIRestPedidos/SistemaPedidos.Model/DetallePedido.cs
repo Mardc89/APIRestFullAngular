@@ -13,7 +13,7 @@ public partial class DetallePedido
 
     public int Cantidad { get; set; }
 
-    public decimal Total { get; set; }
+    public decimal? Total { get; set; }
 
     public virtual Pedido IdPedidoNavigation { get; set; } = null!;
 
