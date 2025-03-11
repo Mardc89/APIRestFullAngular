@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaPedidos.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace SistemaPedidos.BLL.Servicios.Contrato
 {
     public interface IRolService
     {
+        Task<List<RolDTO>> Lista();
     }
 }
