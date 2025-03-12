@@ -80,14 +80,61 @@ namespace SistemaPedidos.BLL.Servicios
             }
         }
 
-        public Task<bool> Editar(UsuarioDTO modelo)
+        public async Task<bool> Editar(UsuarioDTO modelo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var usuarioModelo = _mapper.Map<Usuario>(modelo);
+                var usuarioEncontrado = await _usuarioRepositorio.Obtener(x=>x.IdUsuario==usuarioModelo.IdUsuario);
+
+                if (usuarioEncontrado == null)               
+                    throw new TaskCanceledException("El Usuario No Existe");
+
+                usuarioEncontrado.Nombres = usuarioModelo.Nombres;
+                usuarioEncontrado.Correo = usuarioModelo.Correo;
+                usuarioEncontrado.IdRol = usuarioModelo.IdRol;
+                usuarioEncontrado.Clave = usuarioModelo.Clave;
+                usuarioEncontrado.Estado=usuarioModelo.Estado;
+
+                bool respuesta = await _usuarioRepositorio.Editar(usuarioEncontrado);
+
+                if(!respuesta)
+                    throw new TaskCanceledException("No se pudo Editar");
+
+                return respuesta;
+
+            }
+            catch
+            {
+
+                throw;
+            }
         }
 
-        public Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                var usuarioEncontrado = await _usuarioRepositorio.Obtener(x => x.IdUsuario == id);
+
+                if (usuarioEncontrado == null)
+                    throw new TaskCanceledException("El Usuario No Existe");
+
+
+                bool respuesta = await _usuarioRepositorio.Eliminar(usuarioEncontrado);
+
+                if (!respuesta)
+                    throw new TaskCanceledException("No se pudo Eliminar");
+
+                return respuesta;
+
+            }
+            catch
+            {
+
+                throw;
+            }
         }
     }
 }
