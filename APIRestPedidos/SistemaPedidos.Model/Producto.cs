@@ -21,7 +21,7 @@ public partial class Producto
 
     public int Stock { get; set; }
 
-    public DateTime FechaRegistro { get; set; }
+    public DateTime? FechaRegistro { get; set; }
 
     public virtual ICollection<DetallePedido> DetallePedidos { get; } = new List<DetallePedido>();
 
