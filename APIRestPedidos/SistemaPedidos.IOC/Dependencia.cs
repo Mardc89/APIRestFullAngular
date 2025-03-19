@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SistemaPedidos.BLL.Servicios;
+using SistemaPedidos.BLL.Servicios.Contrato;
 using SistemaPedidos.DAL.DBContext;
 using SistemaPedidos.DAL.Repositorios;
 using SistemaPedidos.DAL.Repositorios.Contrato;
@@ -24,6 +26,13 @@ namespace SistemaPedidos.IOC
 
             services.AddScoped<IPedidoRepositorio,PedidoRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfile));
+
+            services.AddScoped<IRolService, RolService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<IPedidoService, PedidoService>();
+            services.AddScoped<IDashBoardService, DashBoardService>();
         }
     }
 }
