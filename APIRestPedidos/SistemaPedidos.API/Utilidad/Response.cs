@@ -1,4 +1,4 @@
-﻿namespace SistemaPedidos.API.Util
+﻿namespace SistemaPedidos.API.Utilidad
 {
     public class Response<T>
     {

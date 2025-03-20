@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SistemaPedidos.API.Utilidad;
+using SistemaPedidos.BLL.Servicios;
 using SistemaPedidos.BLL.Servicios.Contrato;
 using SistemaPedidos.DTO;
 
@@ -8,27 +9,28 @@ namespace SistemaPedidos.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolController : ControllerBase
+    public class CategoriaController : ControllerBase
     {
-        private readonly IRolService _rolServicio;
+        private readonly ICategoriaService _categoriaService;
 
-        public RolController(IRolService rolServicio)
+        public CategoriaController(ICategoriaService categoriaService)
         {
-            _rolServicio=rolServicio;
+            _categoriaService = categoriaService;
         }
 
         [HttpGet]
         [Route("Lista")]
         public async Task<IActionResult> Lista()
         {
-            var rsp = new Response<List<RolDTO>>();
+            var rsp = new Response<List<CategoriaDTO>>();
 
             try
             {
                 rsp.status = true;
-                rsp.value=await _rolServicio.Lista();
+                rsp.value = await _categoriaService.Lista();
             }
-            catch(Exception ex){
+            catch (Exception ex)
+            {
                 rsp.status = false;
                 rsp.msg = ex.Message;
 
