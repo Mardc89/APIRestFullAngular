@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SistemaPedidos.BLL.Servicios.Contrato;
 using SistemaPedidos.DAL.Repositorios.Contrato;
 using SistemaPedidos.DTO;
@@ -14,7 +15,7 @@ namespace SistemaPedidos.BLL.Servicios
     public class ProductoService:IProductoService
     {
         private readonly IGenericRepositorio<Producto> _productoRepositorio;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public ProductoService(IGenericRepositorio<Producto> productoRepositorio, IMapper mapper)
         {
@@ -88,9 +89,20 @@ namespace SistemaPedidos.BLL.Servicios
 
         }
 
-        public Task<List<ProductoDTO>> Lista()
+        public async Task<List<ProductoDTO>> Lista()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var queryproducto = await _productoRepositorio.Consultar();
+                var ListaProductos = queryproducto.Include(x => x.IdCategoriaNavigation).ToList();
+
+                return _mapper.Map<List<ProductoDTO>>(ListaProductos.ToList());
+            }
+            catch 
+            {
+
+                throw;
+            }
         }
     }
 }

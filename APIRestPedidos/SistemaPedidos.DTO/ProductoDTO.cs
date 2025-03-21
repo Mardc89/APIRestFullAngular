@@ -13,6 +13,7 @@ namespace SistemaPedidos.DTO
         public string Nombre { get; set; } = null!;
 
         public int IdCategoria { get; set; }
+        
         public string DescripcionCategoria { get; set; } = null!;
 
         public string? Precio { get; set; }

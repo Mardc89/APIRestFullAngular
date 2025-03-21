@@ -100,28 +100,33 @@ namespace SistemaPedidos.Helpers
                     );
 
 
-                #region DetallePedido
-                CreateMap<DetallePedido, DetallePedidoDTO>()
-                    .ForMember(destino =>
-                    destino.DescripcionProducto,
-                    opt => opt.MapFrom(origen => origen.IdProductoNavigation.Descripcion)
-                    )
-                    .ForMember(destino =>
-                    destino.Total,
-                    opt => opt.MapFrom(origen =>Convert.ToString(origen.Total.Value, new CultureInfo("es-PE")))
-                    );
-                CreateMap<DetallePedidoDTO, DetallePedido>()
-                    .ForMember(destino =>
-                    destino.IdProductoNavigation.Precio,
-                    opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Precio, new CultureInfo("es-PE")))
-                    )
-                    .ForMember(destino =>
-                    destino.Total,
-                    opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Total, new CultureInfo("es-PE")))
-                    );
-                #endregion DetallePedido
+            #region DetallePedido
+            CreateMap<DetallePedido, DetallePedidoDTO>()
+                .ForMember(destino =>
+                destino.DescripcionProducto,
+                opt => opt.MapFrom(origen => origen.IdProductoNavigation.Descripcion)
+                )
+                .ForMember(destino =>
+                destino.Total,
+                opt => opt.MapFrom(origen => Convert.ToString(origen.Total.Value, new CultureInfo("es-PE")))
+                )
+              .ForMember(destino =>
+            destino.Precio,
+            opt => opt.MapFrom(origen => Convert.ToDecimal(origen.IdProductoNavigation.Precio, new CultureInfo("es-PE")))
+            );
 
-         CreateMap<DetallePedido, ReporteDTO>()
+            CreateMap<DetallePedidoDTO, DetallePedido>()
+                //.ForMember(destino =>
+                //destino.IdProductoNavigation.Precio,
+                //opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Precio, new CultureInfo("es-PE")))
+                //)
+                .ForMember(destino =>
+                destino.Total,
+                opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Total, new CultureInfo("es-PE")))
+                );
+            #endregion DetallePedido
+
+            CreateMap<DetallePedido, ReporteDTO>()
         .ForMember(destino =>
         destino.FechaRegistro,
         opt => opt.MapFrom(origen => origen.IdPedidoNavigation.FechaPedido.Value.ToString("dd/MM/yyyy"))
