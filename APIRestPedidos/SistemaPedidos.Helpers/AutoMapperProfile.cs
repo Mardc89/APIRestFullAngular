@@ -116,10 +116,10 @@ namespace SistemaPedidos.Helpers
             );
 
             CreateMap<DetallePedidoDTO, DetallePedido>()
-                //.ForMember(destino =>
-                //destino.IdProductoNavigation.Precio,
-                //opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Precio, new CultureInfo("es-PE")))
-                //)
+                .ForMember(destino =>
+                destino.IdProductoNavigation,
+                opt => opt.Ignore()
+                )
                 .ForMember(destino =>
                 destino.Total,
                 opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Total, new CultureInfo("es-PE")))
