@@ -1,17 +1,18 @@
+
 import { Injectable } from '@angular/core';
 
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { ResponseApi } from '../Interfaces/response-api';
-import { Pedido } from '../Interfaces/pedido';
+import { appsettings } from '../Settings/appSettings';
+import { ResponseApi } from '../Models/ResponseApi';
+import { Pedido } from '../Models/Pedido';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PedidoService {
 
-    private urlApi:string=environment.endpoint +"Pedido/";
+    private urlApi:string=appsettings.apiUrl +"Pedido/";
    
     constructor(private http:HttpClient) { }
   
@@ -28,3 +29,4 @@ export class PedidoService {
   }
 
 }
+
